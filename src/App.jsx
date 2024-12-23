@@ -1,22 +1,22 @@
 
 import './App.css'
-import { RecoilRoot, useRecoilState } from 'recoil';
+import { RecoilRoot, useRecoilState, useRecoilValue } from 'recoil';
 import { todosAtomFamily } from './atoms';
 
 function App() {
   return <RecoilRoot>
     <Todo id={1}/>
     <Todo id={2} />
-  </RecoilRoot>
+  </RecoilRoot>~
 }
 
 function Todo({id}) {
-   const [todo, setTodo] = useRecoilState(todosAtomFamily(id));
+   const currentodo = useRecoilValue(todosAtomFamily(id));
 
   return (
     <>
-      {todo.title}
-      {todo.description}
+      {currentodo.title}
+      {currentodo.description}
       <br />
     </>
   )
